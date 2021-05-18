@@ -1,0 +1,23 @@
+def CstWaveguidePort(mws, PortNumber, Xrange, Yrange, Zrange, XrangeAdd, YrangeAdd, ZrangeAdd, Coordinates,
+                     Orientation):
+    port = mws.Port
+    port.Reset()
+    port.PortNumber(str(PortNumber))
+    port.Label('')
+    port.NumberOfModes('1')
+    port.AdjustPolarization('False')
+    port.PolarizationAngle('0.0')
+    port.ReferencePlaneDistance('0')
+    port.TextSize('50')
+    port.Coordinates(Coordinates)
+    port.Orientation(Orientation)
+    port.PortOnBound('False')
+    port.ClipPickedPortToBound('False')
+    port.Xrange(str(Xrange[0]), str(Xrange[1]))
+    port.Yrange(str(Yrange[0]), str(Yrange[1]))
+    port.Zrange(str(Zrange[0]), str(Zrange[1]))
+    port.XrangeAdd(str(XrangeAdd[0]), str(XrangeAdd[1]))
+    port.YrangeAdd(str(YrangeAdd[0]), str(YrangeAdd[1]))
+    port.ZrangeAdd(str(ZrangeAdd[0]), str(ZrangeAdd[1]))
+    port.SingleEnded('False')
+    port.Create()
