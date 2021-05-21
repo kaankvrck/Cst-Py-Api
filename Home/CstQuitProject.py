@@ -1,2 +1,2 @@
 def CstQuitProject(mws):
-    mws.Quit
+    mws.Quit()

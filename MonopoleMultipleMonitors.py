@@ -71,7 +71,7 @@ CstDiscretePort(mws, PortNumber, SetP1, SetP2)
 
 for monitorindex in np.arange(0.5, 4, 0.5):
     CstDefineEfieldMonitor(mws, 'e-field' + str(monitorindex), monitorindex)
-    CstDefineFarfieldMonitor(mws, 'Farfield' + str(monitorindex), monitorindex)
+    CstDefineFarfieldMonitor(mws, 'farfield' + str(monitorindex), monitorindex)
 
 CstSaveProject(mws)
 CstDefineTimedomainSolver(mws, -30)

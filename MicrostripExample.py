@@ -122,7 +122,7 @@ CstWaveguidePort(mws, PortNumber, Xrange, Yrange, Zrange, XrangeAdd, YrangeAdd, 
 
 CstDefineEfieldMonitor(mws, ('e-field' + '2.45'), 2.45)
 CstDefineHfieldMonitor(mws, ('h-field' + '2.45'), 2.45)
-CstDefineFarfieldMonitor(mws, ('Farfield' + '2.45'), 2.45)
+CstDefineFarfieldMonitor(mws, ('farfield' + '2.45'), 2.45)
 
 CstSaveAsProject(mws, 'MicrostripAntenna')
 

@@ -1,7 +1,7 @@
 def CstBone(mws):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name('Bone')
     material.FrqType('all')
     material.Type('Normal')

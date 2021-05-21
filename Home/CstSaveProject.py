@@ -1,2 +1,2 @@
 def CstSaveProject(mws):
-    mws.Save
+    mws.Save()

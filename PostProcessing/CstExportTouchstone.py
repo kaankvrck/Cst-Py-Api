@@ -1,7 +1,7 @@
 def CstExportTouchstone(mws, exportpath, format):
     touchstone = mws.TOUCHSTONE
 
-    touchstone.Reset
+    touchstone.Reset()
     touchstone.FileName(exportpath)
     touchstone.Impedance('50')
     touchstone.Format(format)
@@ -9,4 +9,4 @@ def CstExportTouchstone(mws, exportpath, format):
     touchstone.Renormalize('True')
     touchstone.UseARResults('False')
     touchstone.SetNSamples('1001')
-    touchstone.Write
+    touchstone.Write()

@@ -6,12 +6,12 @@ def CstDefineFrequencydomainSolver(mws, startFreq, endFreq, samples):
 
     mesh.SetCreator('High Frequency')
 
-    fdSolver.Reset
+    fdSolver.Reset()
     fdSolver.SetMethod('Tetrahedral', 'General purpose')
     fdSolver.OrderTet('Second')
     fdSolver.OrderSrf('First')
     fdSolver.Stimulation("All", "All")
-    fdSolver.ResetExcitationList
+    fdSolver.ResetExcitationList()
     fdSolver.AutoNormImpedance('True')
     fdSolver.NormingImpedance('50')
     fdSolver.ModesOnly('False')
@@ -79,7 +79,7 @@ def CstDefineFrequencydomainSolver(mws, startFreq, endFreq, samples):
     fdSolver.MaxCPUs('96')
     fdSolver.MaximumNumberOfCPUDevices('2')
 
-    ieSolver.Reset
+    ieSolver.Reset()
     ieSolver.UseFastFrequencySweep('True')
     ieSolver.UseIEGroundPlane('False')
     ieSolver.CalcFarFieldInRealGround('False')
@@ -107,4 +107,4 @@ def CstDefineFrequencydomainSolver(mws, startFreq, endFreq, samples):
     ieSolver.FrequencySamplesCMA('0')
     ieSolver.SetMemSettingCMA('Auto')
 
-    fdSolver.Start
+    fdSolver.Start()

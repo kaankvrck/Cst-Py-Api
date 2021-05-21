@@ -2,7 +2,7 @@ def CstPlaneWaveExcitation(mws, Normal, EVector, Polarization, ReferenceFrequenc
                            AxialRatio):
     planeWave = mws.PlaneWave
 
-    planeWave.Reset
+    planeWave.Reset()
     planeWave.Normal(str(Normal(0)), str(Normal(1)), str(Normal(2)))
     planeWave.EVector(str(EVector(0)), str(EVector(1)), str(EVector(2)))
     planeWave.Polarization(Polarization)
@@ -11,4 +11,4 @@ def CstPlaneWaveExcitation(mws, Normal, EVector, Polarization, ReferenceFrequenc
     planeWave.CircularDirection(CircularDirection)
     planeWave.AxialRatio(str(AxialRatio))
     planeWave.SetUserDecouplingPlane('False')
-    planeWave.Store
+    planeWave.Store()

@@ -205,7 +205,7 @@ CstDefineFrequencyRange(mws, 0.5, 4)
 
 for monitorindex in np.arange(0.5, 4, 0.5):
     CstDefineEfieldMonitor(mws, 'e-field' + str(monitorindex), monitorindex)
-    CstDefineFarfieldMonitor(mws, 'Farfield' + str(monitorindex), monitorindex)
+    CstDefineFarfieldMonitor(mws, 'farfield' + str(monitorindex), monitorindex)
 
 minfrequency = 0.5
 x = 'expanded open'

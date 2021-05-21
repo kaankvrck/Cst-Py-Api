@@ -1,7 +1,7 @@
 def CstMuscle(mws):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name('Muscle')
     material.FrqType('all')
     material.Type('Normal')

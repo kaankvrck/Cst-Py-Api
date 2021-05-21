@@ -1,7 +1,7 @@
 def CstRogersTMM10ilossy(mws):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name('Rogers TMM 10i (lossy)')
     material.FrqType('all')
     material.Type('Normal')
@@ -32,5 +32,5 @@ def CstRogersTMM10ilossy(mws):
     material.Colour('0.94', '0.82', '0.76')
     material.Wireframe('False')
     material.Transparency('0')
-    material.Create
+    material.Create()
     format(material)

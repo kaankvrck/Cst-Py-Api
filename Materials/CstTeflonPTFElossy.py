@@ -1,7 +1,7 @@
 def CstTeflonPTFElossy(mws):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name('Teflon (PTFE) (lossy)')
     material.FrqType('all')
     material.Type('Normal')

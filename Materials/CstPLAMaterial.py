@@ -1,7 +1,7 @@
 def CstPLAMaterial(mws):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name('PLA')
     material.FrqType('all')
     material.Type('Normal')
@@ -32,5 +32,5 @@ def CstPLAMaterial(mws):
     material.Colour('0', '1', '1')
     material.Wireframe('False')
     material.Transparency('0')
-    material.Create
+    material.Create()
     format(material)

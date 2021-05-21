@@ -58,8 +58,8 @@ def CstExportFarfieldSourceAngleStep(mws, exportpath, frequency, port, StepTheta
     farfieldPlot.SetPhaseCenterComponent('boresight')
     farfieldPlot.SetPhaseCenterPlane('both')
     farfieldPlot.ShowPhaseCenter('True')
-    farfieldPlot.StoreSettings
+    farfieldPlot.StoreSettings()
 
-    selectTreeItem = mws.SelectTreeItem(chr('Farfields\Farfield' + str(frequency) + {' '} + '[' + str(port) + ']'))
+    selectTreeItem = mws.SelectTreeItem('Farfields/farfield' + str(frequency) + ' ' + '[' + str(port) + ']')
 
     farfieldPlot.ASCIIExportAsSource(exportpath)

@@ -1,7 +1,7 @@
 def Cstcreatedielectricmaterial(mws, Name, Epsilon, Mue, TanD, ThermalConductivity):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name(Name)
     material.FrqType('all')
     material.Type('Normal')
@@ -33,5 +33,5 @@ def Cstcreatedielectricmaterial(mws, Name, Epsilon, Mue, TanD, ThermalConductivi
     material.Colour('0.94', '0.82', '0.76')
     material.Wireframe('False')
     material.Transparency('0')
-    material.Create
+    material.Create()
     format(material)

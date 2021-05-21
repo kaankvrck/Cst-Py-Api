@@ -58,8 +58,8 @@ def CstExportFarfieldSource(mws, exportpath, frequency):
     farfieldPlot.SetPhaseCenterComponent('boresight')
     farfieldPlot.SetPhaseCenterPlane('both')
     farfieldPlot.ShowPhaseCenter('True')
-    farfieldPlot.StoreSettings
+    farfieldPlot.StoreSettings()
 
-    selectTreeItem = mws.SelectTreeItem(chr('Farfields\Farfield' + str(frequency) + {' '} + '[1]'))
+    selectTreeItem = mws.SelectTreeItem('Farfields/farfield' + str(frequency) + ' ' + '[1]')
 
     farfieldPlot.ASCIIExportAsSource(exportpath)

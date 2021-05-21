@@ -71,7 +71,7 @@ CstDiscretePort(mws, PortNumber, SetP1, SetP2)
 
 monitorindex = 2.25
 CstDefineEfieldMonitor(mws, 'e-field' + str(monitorindex), monitorindex)
-CstDefineFarfieldMonitor(mws, 'Farfield' + str(monitorindex), monitorindex)
+CstDefineFarfieldMonitor(mws, 'farfield' + str(monitorindex), monitorindex)
 
 CstSaveProject(mws)
 

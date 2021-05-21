@@ -1,7 +1,7 @@
 def Cstblood(mws):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name('Blood')
     material.FrqType('all')
     material.Type('Normal')
@@ -68,5 +68,5 @@ def Cstblood(mws):
     material.Allowoutline('False')
     material.Transparentoutline('False')
     material.Transparency('0')
-    material.Create
+    material.Create()
     format(material)

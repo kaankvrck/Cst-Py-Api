@@ -1,7 +1,7 @@
 def CstAir(mws):
     material = mws.Material
 
-    material.Reset
+    material.Reset()
     material.Name('Air')
     material.FrqType('all')
     material.Type('Normal')
@@ -33,5 +33,5 @@ def CstAir(mws):
     material.Colour('0.682353', '0.717647', '1')
     material.Wireframe('False')
     material.Transparency('0')
-    material.Create
+    material.Create()
     format(material)
