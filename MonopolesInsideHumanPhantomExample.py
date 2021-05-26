@@ -1,5 +1,6 @@
 import win32com.client
 import numpy as np
+from matplotlib import pyplot as plt
 
 from Home.CstDefineUnits import *
 from Home.CstSaveProject import *
@@ -17,9 +18,16 @@ from Modeling.CstAdd import *
 from Materials.CstBone import *
 from Materials.CstMuscle import *
 from Materials.CstTeflonPTFElossy import *
+from PostProcessing.CstResultParameters import *
+from PostProcessing.CstExportTouchstone import *
 
-cst = win32com.client.Dispatch("CSTStudio.Application")
-mws = cst.NewMWS()
+#cst = win32com.client.Dispatch("CSTStudio.Application")
+#mws = cst.NewMWS()
+
+cst = win32com.client.dynamic.Dispatch("CSTStudio.Application")
+cst.SetQuietMode(True)
+new_mws = cst.NewMWS()
+mws = cst.Active3D()
 
 Geometry = 'mm'
 Frequency = 'GHz'
@@ -220,3 +228,10 @@ CstDefineBackroundMaterial(mws, XminSpace, XmaxSpace, YminSpace, YmaxSpace, Zmin
 
 CstSaveProject(mws)
 CstDefineTimedomainSolver(mws, -30)
+
+frequencies_list, [y_real, y_imag], y_list, [x_label, y_label, plot_title] = CstResultParameters(mws, parent_path=r'1D Results\S-Parameters', run_id=0, result_id=0)
+
+export_file_path = 'E:\\demo\\monopole_human_phantom_demo.txt'
+CstExportTouchstone(mws, export_file_path)
+
+cst.Quit()

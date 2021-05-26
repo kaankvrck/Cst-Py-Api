@@ -1,5 +1,6 @@
 import win32com.client
 import numpy as np
+from matplotlib import pyplot as plt
 
 from Home.CstDefaultUnits import *
 from Home.CstMeshInitiator import *
@@ -15,9 +16,16 @@ from Simulation.CstDefineTimedomainSolver import *
 from Modeling.Cstcylinder import *
 from Modeling.Cstbrick import *
 from Materials.CstCopperAnnealedLossy import *
+from PostProcessing.CstResultParameters import *
+from PostProcessing.CstExportTouchstone import *
 
-cst = win32com.client.Dispatch("CSTStudio.Application")
-mws = cst.NewMWS()
+#cst = win32com.client.Dispatch("CSTStudio.Application")
+#mws = cst.NewMWS()
+
+cst = win32com.client.dynamic.Dispatch("CSTStudio.Application")
+cst.SetQuietMode(True)
+new_mws = cst.NewMWS()
+mws = cst.Active3D()
 
 CstDefaultUnits(mws)
 CstMeshInitiator(mws)
@@ -84,3 +92,10 @@ for monitorindex in np.arange(0.5, 4, 0.5):
 
 CstSaveProject(mws)
 CstDefineTimedomainSolver(mws, -30)
+
+frequencies_list, [y_real, y_imag], y_list, [x_label, y_label, plot_title] = CstResultParameters(mws, parent_path=r'1D Results\S-Parameters', run_id=0, result_id=0)
+
+export_file_path = 'E:\\demo\\two_monopole_multiple_demo.txt'
+CstExportTouchstone(mws, export_file_path)
+
+cst.Quit()

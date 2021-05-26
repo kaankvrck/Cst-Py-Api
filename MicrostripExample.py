@@ -1,9 +1,11 @@
 import win32com.client
+from matplotlib import pyplot as plt
 
 from Home.CstMeshInitiator import *
 from Home.CstDefineBackroundMaterial import *
 from Home.CstDefaultUnits import *
 from Home.CstSaveAsProject import *
+from Home.CstQuitProject import *
 from Materials.CstCopperAnnealedLossy import *
 from Materials.CstFR4lossy import *
 from Modeling.Cstbrick import *
@@ -17,9 +19,16 @@ from Simulation.CstDefineHfieldMonitor import *
 from Simulation.CstDefineEfieldMonitor import *
 from Simulation.CstDefineFarfieldMonitor import *
 from Simulation.CstDefineTimedomainSolver import *
+from PostProcessing.CstResultParameters import *
+from PostProcessing.CstExportTouchstone import *
 
-cst = win32com.client.Dispatch("CSTStudio.Application")
-mws = cst.NewMWS()
+#cst = win32com.client.Dispatch("CSTStudio.Application")
+#mws = cst.NewMWS()
+
+cst = win32com.client.dynamic.Dispatch("CSTStudio.Application")
+cst.SetQuietMode(True)
+new_mws = cst.NewMWS()
+mws = cst.Active3D()
 
 CstDefaultUnits(mws)
 
@@ -124,6 +133,29 @@ CstDefineEfieldMonitor(mws, ('e-field' + '2.45'), 2.45)
 CstDefineHfieldMonitor(mws, ('h-field' + '2.45'), 2.45)
 CstDefineFarfieldMonitor(mws, ('farfield' + '2.45'), 2.45)
 
-CstSaveAsProject(mws, 'MicrostripAntenna')
+CstSaveAsProject(mws, 'E:\\demo\\demo_result\\MicrostripAntenna')
 
 CstDefineTimedomainSolver(mws, -40)
+
+frequencies_list, [y_real, y_imag], y_list, [x_label, y_label, plot_title] = CstResultParameters(mws, parent_path=r'1D Results\S-Parameters', run_id=0, result_id=0)
+
+plt.figure(dpi=300)
+plt.plot(frequencies_list, y_real)
+plt.plot(frequencies_list, y_imag)
+plt.xlabel(x_label)
+plt.ylabel(y_label)
+plt.title(plot_title)
+plt.show()
+
+plt.figure(dpi=300)
+plt.plot(frequencies_list, y_list)
+plt.xlabel(x_label)
+plt.ylabel(y_label)
+plt.title(plot_title)
+plt.show()
+
+
+export_file_path = 'E:\\demo\\microstrip_demo.txt'
+CstExportTouchstone(mws, export_file_path)
+
+cst.Quit()
