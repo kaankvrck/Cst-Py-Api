@@ -7,6 +7,41 @@ def CstMeshInitiator(mws):
 
     FDSolver.ExtrudeOpenBC('True')
 
+    mesh.MeshType('PBA')
+    mesh.SetCreator('High Frequency')
+
+    meshSetting.SetMeshType('Hex')
+    meshSetting.Set('Version', '1%')
+
+    # MAX CELL - WAVELENGTH REFINEMENT
+    meshSetting.Set('StepsPerWaveNear', '20')
+    meshSetting.Set('StepsPerWaveFar', '20')
+    meshSetting.Set('WavelengthRefinementSameAsNear', '1')
+
+    # MAX CELL - GEOMETRY REFINEMENT
+    meshSetting.Set('StepsPerBoxNear', '20')
+    meshSetting.Set('StepsPerBoxFar', '1')
+    meshSetting.Set('MaxStepNear', '0')
+    meshSetting.Set('MaxStepFar', '0')
+    meshSetting.Set('ModelBoxDescrNear', 'maxedge')
+    meshSetting.Set('ModelBoxDescrFar', 'maxedge')
+    meshSetting.Set('UseMaxStepAbsolute', '0')
+    meshSetting.Set('GeometryRefinementSameAsNear', '0')
+
+    # MIN CELL
+    meshSetting.Set('UseRatioLimitGeometry', '1')
+    meshSetting.Set('RatioLimitGeometry', '20')
+    meshSetting.Set('MinStepGeometryX', '0')
+    meshSetting.Set('MinStepGeometryY', '0')
+    meshSetting.Set('MinStepGeometryZ', '0')
+    meshSetting.Set('UseSameMinStepGeometryXYZ', '1')
+
+    meshSetting.Set('PlaneMergeVersion', '2')
+
+    meshSetting.SetMeshType('Hex')
+    meshSetting.Set('EdgeRefinementOn', '1')
+    meshSetting.Set('EdgeRefinementRatio', '6')
+
     mesh.MergeThinPECLayerFixpoints('True')
     mesh.RatioLimit('20')
     mesh.AutomeshRefineAtPecLines('True', '6')
@@ -16,11 +51,6 @@ def CstMeshInitiator(mws):
     mesh.AnisotropicCurvatureRefinement('True')
     mesh.AnisotropicCurvatureRefinementFSM('True')
 
-    meshSetting.SetMeshType('Hex')
-    meshSetting.Set('RatioLimitGeometry', '20')
-    meshSetting.Set('EdgeRefinementOn', '1')
-    meshSetting.Set('EdgeRefinementRatio', '6')
-
     meshSetting.SetMeshType('HexTLM')
     meshSetting.Set('RatioLimitGeometry', '20')
 
@@ -29,11 +59,6 @@ def CstMeshInitiator(mws):
     meshSetting.Set('SrfMeshGradation', '1.5')
 
     meshAdaption3D.SetAdaptionStrategy('Energy')
-
-    meshSetting.SetMeshType('Hex')
-    meshSetting.Set('Version', '1%')
-
-    mesh.MeshType('PBA')
 
     PostProcess1D.ActivateOperation('vswr', 'true')
     PostProcess1D.ActivateOperation('yz-matrices', 'true')
