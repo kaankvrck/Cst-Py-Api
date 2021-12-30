@@ -115,8 +115,8 @@ component2 = 'component1:FeedLine'
 CstAdd(mws, component1, component2)
 
 Name = 'Substrate'
-id = 3
-CstPickFace(mws, Name, id)
+face_id = 3
+CstPickFace(mws, 'component1', Name, face_id)
 
 PortNumber = 1
 Xrange = [-36, 36]
